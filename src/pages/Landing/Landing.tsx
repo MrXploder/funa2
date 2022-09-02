@@ -1,3 +1,7 @@
 import './Landing.scss'
 
-export const LandingPage = () => <p>landing page</p>
+export default () => {
+  return (
+    <section className='w-full h-full'></section>
+  )
+}

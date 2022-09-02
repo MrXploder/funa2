@@ -1,7 +1,7 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 
-import { LandingPage } from './pages/Landing/Landing'
+import LandingPage from './pages/Landing/Landing'
 
 import './App.css'
 
