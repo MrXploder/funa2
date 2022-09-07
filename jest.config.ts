@@ -5,8 +5,9 @@ const config: Config = {
   testEnvironment: 'jsdom',
   setupFilesAfterEnv: ['<rootDir>/jest-setup.ts'],
   moduleNameMapper: {
-    '\\.(css|less)$': 'indentity-obj-proxy',
-  },
+    '^@/(.*)$': '<rootDir>/src/$1',
+    '\\.(css|less)$': 'indentity-obj-proxy'
+  }
 }
 
 export default config

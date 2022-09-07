@@ -1,17 +1,28 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
 
-import LandingPage from './pages/Landing/Landing'
+import DefaultLayout from './layouts/Default/Default.component'
+import SimpleLayout from './layouts/Simple/Simple.component'
+
+import ProtectedRoute from './router/Protected.component'
 
 import './App.css'
 
-const HomePage = React.lazy(() => import('./pages/Home/Home'))
+const LandingPage = React.lazy(() => import('./pages/Landing/Landing.page'))
+const HomePage = React.lazy(() => import('./pages/Home/Home.page'))
 
-const App = () => (
-  <Routes>
-    <Route path="/" element={<LandingPage />} />
-    <Route path="/home" element={<HomePage />} />
-  </Routes>
+export default () => (
+  <Suspense>
+    <Routes>
+      <Route path="/" element={<SimpleLayout />}>
+        <Route index element={<LandingPage />} />
+      </Route>
+
+      <Route path="/home" element={<DefaultLayout />}>
+        <Route element={<ProtectedRoute />}>
+          <Route index element={<HomePage />} />
+        </Route>
+      </Route>
+    </Routes>
+  </Suspense>
 )
-
-export default App
